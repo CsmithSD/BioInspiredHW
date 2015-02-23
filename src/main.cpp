@@ -5,6 +5,7 @@
 int main()
 {
     hill_climbing();
-    simulated_annealing();
-    genetic_algorithm();
+    //simulated_annealing();
+    //genetic_algorithm();
+    return 0;
 }
