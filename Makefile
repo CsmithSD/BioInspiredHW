@@ -27,7 +27,7 @@ all:    bio_inspired_hw
 
 # specific targets
 bio_inspired_hw:	main.o simulated_annealing.o hill_climbing.o genetic_algorithm.o fit_func.o
-	$(LINK) -I/usr/include/boost-1_33 -L/usr/lib -o $@ $^
+	$(LINK) -o $@ $^
 
 # generic C and C++ targets for OpenGL programs consisting of only one file
 # type "make filename" (no extension) to build
