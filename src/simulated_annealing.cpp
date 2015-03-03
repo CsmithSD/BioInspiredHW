@@ -30,7 +30,7 @@ int simulated_annealing()
             x = xprime;
         }
         
-        update(T);
+        update(T, i);
     }
 
     cout << x << " : " << fit(x) << endl;
