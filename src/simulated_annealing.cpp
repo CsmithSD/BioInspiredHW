@@ -54,7 +54,7 @@ void initialize_T(double & t)
     t = 1.00;
 }
 
-void update(double & t)
+void update(double & T, int t)
 {
-    t = ( t* (.95) );
+    T = ( T* (.95) );
 }
