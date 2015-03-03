@@ -1,19 +1,13 @@
-//#include <boost/random.hpp>
-#include <cstdlib>
-#include <iostream>
 #include "../include/fit_func.h"
+#include "../include/simulated_annealing.h"
 
 #define GEN 500
 
 //function prototypes 
-double pertubation( double individual);
-double random( double min, double max);
-void initialize_T(double & t);
-void update(double & T);
 
 using namespace std;
 
-int main()
+int simulated_annealing()
 {
     //Seed random number generator
     srand(time(NULL));
