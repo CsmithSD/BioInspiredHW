@@ -30,7 +30,8 @@ int simulated_annealing()
             x = xprime;
         }
         
-        update(T, i);
+        if(i % 10 == 0)
+            update(T);
     }
 
     cout << x << " : " << fit(x) << endl;
@@ -44,7 +45,7 @@ double pertubation( double individual)
     return individual + random(-.2, .2);
 }
 
-inline double random( double min, double max)
+double random( double min, double max)
 {
     return ((double)rand()/(double)RAND_MAX)*(max-min) + min;
 }
@@ -54,7 +55,7 @@ void initialize_T(double & t)
     t = 1.00;
 }
 
-void update(double & T, int t)
+void update(double & T)
 {
-    T = ( T* (.95) );
+    T = ( T* (.85) );
 }

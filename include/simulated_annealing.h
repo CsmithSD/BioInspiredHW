@@ -7,7 +7,7 @@
 double pertubation( double individual);
 double random( double min, double max);
 void initialize_T(double & t);
-void update(double & T, int t);
+void update(double & T);
 int simulated_annealing();
 int stochastic_hill_climbing();
 
