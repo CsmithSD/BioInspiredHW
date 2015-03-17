@@ -9,20 +9,20 @@ using namespace std;
 
 int main()
 {
-    simulated_annealing();
+    stochastic_hill_climbing();
     
     return 0;
 }
 
-int simulated_annealing()
+int stochastic_hill_climbing()
 {
+    double T = 1;
     //Seed random number generator
     srand(time(NULL));
 
     //initialize individual inbetween -1 and 1 
     double x = random(-1, 1);
     double xprime;      //next pertubation of individual
-    double T = 1.0;     //initialize T (temperature) at a higher value
 
     //Loop though the number of generations
     for(int i = 0; i < GEN; i++)
@@ -36,9 +36,6 @@ int simulated_annealing()
             cout << i << ": " << fit(xprime) - fit(x) << endl;
             x = xprime;
         }
-        
-        if(i % 10 == 0)
-            update(T);
     }
 
     cout << x << " : " << fit(x) << endl;
@@ -49,16 +46,14 @@ int simulated_annealing()
 
 double pertubation( double individual)
 {
-    return individual + random(-.2, .2);
+        return individual + random(-.2, .2);
 }
-
 
 void initialize_T(double & t)
 {
-    t = 1.00;
+        t = 1.00;
 }
 
-void update(double & T)
-{
-    T = ( T* (.85) );
-}
+
+
+

@@ -1,6 +1,22 @@
 % !TEX root = BioInspired.tex
 
 \chapter{Artificial Neural Networks - Text Chapter 4}
+\section{Problem 17}
+Apply the MLP network trained with the backprobagation learning algorithm to solve the character recognition task of Section 4.4.2
+
+Determine a suitable network architecture and then test the resultant network sensitivity to noise in the test data.  Test different noise levels, from 5\% to 50\%
+
+\subsection{Background}
+Artificial Neural networks are inspired by the neural networks that are at work within the human body.  This problem gives a set of 8 different 12x10 grid of binary pixels.  The input patterns should be feed in thought the network as 120 different input options.
+
+
+\subsection{Algorithm}
+As the input layer receives the neural network, weights will be applied and a sigmoid activation function will determine the next hidden layers output.  This layer then feeds into the output layer which has a different set of weights.
+
+After the input goes though the ANN, records of the output for the neurons will be recorded.  This will be used for the backprobagation of error.
+
+\subsection{Results}
+The neural network took a long while to figure out.  In fact a few bugs remain: the back propagation of the error didn't seem to work as the delta values where close if not already zero.
 
 
 

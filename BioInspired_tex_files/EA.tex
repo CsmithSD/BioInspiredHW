@@ -2,4 +2,78 @@
 
 \chapter{Evolutionary Algorithms - Text Chapter 3}
 
-\section{Problem 1}
+\section{Problem 1 & 2}
+
+
+Implement the various hill-climbing procedures, the simulated annealing, and genetic algorithms to solve the problem exemplified in Section 3.3.3. Use a real valued representation scheme for the candidate solutions (variable x).
+\newline
+\newline
+{\setlength{\parindent}{0cm} By comparing the performance of the algorithms, what can you conclude?}
+\newline
+\par
+	The performance of the simple hill-climbing algorithm depended on where it started. If the point started around 0.1 it would get the the maximum easily. However, if it started at a location where it was on another "hill" it would only find a local maximum instead of the global. 
+\par
+	The iterative hill-climbing algorithm was able to find the global maximum since it had many points that it would compute to find local maximums depending on where each point started. It then took the highest one and considered that the global maximum. This approach had better performance overall compared to the standard but could also fall into the same position if one of the points that were initialized were not near the global maximum.
+\par
+	The stochastic hill-climbing
+\par
+	The simulated annealing algorithm
+\par
+	The genetic algorithm  compared to the simple and iterative hill-climbing algorithms was a lot better where it almost always found the global maximum. There is still a small probability that it would find only a local maximum. Compared to the stochastic and simulated annealing algorithms it was on par with them since they both were able to find the global maximum every time they were run.
+	\par
+	On a small search interval that these different algorithms ran on showed that they were about the same for this case. On larger intervals it would seem that the genetic algorithm could out perform the stochastic hill-climbing and simulated annealing algorithms because of the high randomness involved in the genetic algorithm compared to the other two.
+	\newline
+	\newline
+	
+{\setlength{\parindent}{0cm}For the simple hill-climbing, try different initial configurations as attempts at finding the global optimum. Was this algorithm Successful?
+Discuss the sensitivity of all the algorithms in relation to their input parameters.}
+\begin{itemize}
+	\item Simple hill-climbing and Iterative hill-climbing
+	\par
+	The simple hill-climbing and iterative hill-climbing algorithms use a basic approach of the hill climbing sudo code presented in the book. They are combined since the only difference between the two the iterative has more than 1 point but it is coded in a way to give the program 1 to how many points that someone would like to run the program against. The point(s) are initialized randomly across the search space and they follow whichever direction gives a larger y value after the points are evaluated and each direction is evaluated. 
+	\item Stochastic hill-climbing
+	\item Genetic algorithm
+	\par
+	The genetic algorithm initialized the population randomly using a bit string representation. The population is then evaluated and the upper half is kept while the lower half the population is recreated using recombination of the upper half of the population. Then a random bit is flipped in the bit string representation. The new individual is evaluated and then the population is sorted after all the new individuals are evaluated. The best overall in the population by the ending generation is then displayed.
+\end{itemize}
+\section{Problem 7}
+Determine, using genetic programming (GP), the computer program (S-expression)that produces exactly the outputs presented in Table 3.3 for each value of x. The following hypotheses are given:
+\begin{itemize}
+	\item Use only functions with two arguments( binary trees )
+	\item Largest depth allowed for each tree: 4
+	\item Function set: F = \{ +, *\}
+	\item Terminal set: T = \{ 0, 1, 2, 3, 4, 5, x\}.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+\hline
+x   & Program output \\ \hline
+-10 & 153            \\ \hline
+-9  & 120            \\ \hline
+-8  & 91             \\ \hline
+-7  & 66             \\ \hline
+-6  & 45             \\ \hline
+-5  & 28             \\ \hline
+-4  & 15             \\ \hline
+-3  & 6              \\ \hline
+-2  & 1              \\ \hline
+-1  & 0              \\ \hline
+0   & 3              \\ \hline
+1   & 10             \\ \hline
+2   & 21             \\ \hline
+3   & 36             \\ \hline
+4   & 55             \\ \hline
+5   & 78             \\ \hline
+6   & 105            \\ \hline
+7   & 136            \\ \hline
+8   & 171            \\ \hline
+9   & 210            \\ \hline
+10  & 253            \\ \hline
+\end{tabular}
+\end{table}
+\par
+The genetic programming algorithm is structured similarly to the genetic algorithm in the sense that it goes through a set number of generations, has a population of polynomials expressed as trees, evaluates the fitness of individuals, and does recombination and mutations on individuals. Instead of a bit string representation this algorithm uses a binary try that stores its value at each node in a character value. s are done by picking a random node in two trees and copying that node and its children as the left side of a new individual for the first tree and then the right side of the new individual for the second tree. Mutation is done by randomly selecting a node in a tree and changing it randomly to be within it's set. So the function set just switches to the function the value is not. The terminal set will randomly be one of the terminals that the previous value was not.
+\par
+The results of this program give a consistent result of 0.952381 or 95 percent correct for the fitness of an individual. The equation (((( x + 5 ) + x ) * x + 3 ) is one of those results. There are other results that are worse as well but that is because the trees representing the equations are randomly generated and potentially recombination and mutation would only allow it to slightly increase since they don't change the height past the deepest tree. Occasionally there is a result of a 100 percent correctness and the following two equations gave that result, ( 3 + ( ( ( x * 2) + ( 4 + 1 ) ) * x) ) and ( 3 + ( x * ( ( x + 5 ) + ( 0 + x ) ) ) ).

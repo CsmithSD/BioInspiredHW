@@ -14,8 +14,8 @@ LINK = g++
 
 # Turn on optimization and warnings (add -g for debugging with gdb):
 # CPPFLAGS = 		# preprocessor flags
-CFLAGS = -g -O -Wall
-CXXFLAGS = -g -O -Wall
+CFLAGS = -finline-functions -g -O3 -Wall
+CXXFLAGS = -finline-functions -g -O3 -Wall
 
 VPATH = src
 #-----------------------------------------------------------------------
@@ -23,19 +23,34 @@ VPATH = src
 # MAKE allows the use of "wildcards", to make writing compilation instructions
 # a bit easier. GNU make uses $@ for the target and $^ for the dependencies.
 
-all:    bio_inspired_hw
+all:    hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
 
 # specific targets
-bio_inspired_hw:	main.o simulated_annealing.o hill_climbing.o genetic_algorithm.o fit_func.o
-	$(LINK) -o $@ $^
+hill_climbing: hill_climbing.o fit_func.o
+	$(LINK) $(CFLAGS) $^ -o $@
+stochastic_hill: stochastic_hill_climbing.o fit_func.o
+	$(LINK) $(CFLAGS) $^ -o $@
+simulated_annealing: simulated_annealing.o fit_func.o
+	$(LINK) $(CFLAGS) $^ -o $@
+genetic_algorithm: genetic_algorithm.o fit_func.o
+	$(LINK) $(CFLAGS) $^ -o $@
+genetic_programming: genetic_programming.o
+	$(LINK) $(CFLAGS) $^ -o $@
+particle_swarm: particle_swarm.o fit_func.o
+	$(LINK) $(CFLAGS) $^ -o $@
+bone_marrow: bone_marrow.o
+	$(LINK) $(CFLAGS) $^ -o $@
+
+#bio_inspired_hw:	main.o bone_marrow.o hill_climbing.o  fit_func.o particle_swarm.o simulated_annealing.o genetic_programming.o
+#	$(LINK) -g -Wall -o $@ $^
 
 # generic C and C++ targets for OpenGL programs consisting of only one file
 # type "make filename" (no extension) to build
 .c:
-	$(CC) -o $@ $@.c $(GL_LIBS)
+	$(CC) $(CFLAGS) -o $@ $@.c $(GL_LIBS)
 
 .cpp:
-	$(CXX) -o $@ $@.cpp $(GL_LIBS)
+	$(CXX) $(CFLAGS) -o $@ $@.cpp $(GL_LIBS)
 
 # utility targets
 clean:

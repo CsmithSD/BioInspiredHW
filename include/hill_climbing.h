@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "fit_func.h"
+#include <cstdlib>
+#include <time.h>
 using namespace std;
 
 #ifndef _HILL_CLIMBING_H_
@@ -7,4 +9,7 @@ using namespace std;
 
 #define kmax 100
 void hill_climbing(const int &num_points);
+double random( double min, double max);
+
+
 #endif

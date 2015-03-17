@@ -1,7 +1,32 @@
 % !TEX root = BioInspired.tex
 
 \chapter{Swarms - Text Chapter 5}
+\section{Problem 1}
+Write pseudo code for the Simple Ant Colony Optimization (S-ACO) algorithm considering pheromone evaporation, implement it continually, and apply it to solve the TSP.  Discuss the results obtained.
 
+Remove the pheromone evaporation term, apply the algorithm to the same problem, and discuss the results obtained
+
+\subsection{Background}
+Many biologists and psychologists have studied ants and their behaviors.  Among other things, the research that shows how ants forage for food has produced the Ant Colony Optimization algorithm.  The main element observed from ant colonies is \textbf{pheromone deposition}.  This is a trail left by a foraging ant that attracts other ants.  This is used in the algorithm to help exploit existing paths that other ants have seemed to take. The more the path is traveled the stronger the pheromone, and the stronger the the pheromone, the more likely an ant will follow the path.
+
+
+\subsection{Algorithm}
+While the pheromone deposition is the main way to exploit a food source or path, this can be problematic as the colony could be trapped in a sub-optimal path. There are two means for overcoming this obstacle: \textbf{probabilistic transition rule}, and the  \textbf{pheromone decay rate}.  The probabilistic transition rule gives the ant a probability of choosing a certain path, one that might lead to a more optimal solution.  Secondly, the pheromone decay rate allows sub-optimal routes to be washed away by better paths.
+
+\subsection{Hypothesis}
+My hypothesis is that by removing the pheromone evaporation rate, the algorithm will be at the mercy of the initial population of edges traveled by ants.  
+
+\subsection{Results}
+Too much time was spent trying to figure out the Artificial Neural Network that too little time was allocated for this problem. 
+
+\section{Problem 8}
+Apply the PS algorithm described in Section 5.4.1 to the maximization problem of Example 3.3.3. Compare the relative performance of the PS algorithm with that obtained using a standard genetic algorithm.
+\newline
+\newline
+\par
+The algorithm used for the particle swarm was a slightly modified version from the slides presented in class. Only the bounds of where the function was and the fitness function were changed so the swarm would stay within the bounds of the problem.
+\par
+The particle swarm algorithm performance compared to standard genetic algorithm was overall better on the small search space. The swarm always got the global maximum like the genetic algorithm but it appeared to always get closer where the ga has a more random element to it and would get the global maximum with some error in the hundredths spot where the swarm's error appeared to be even smaller than that.
 
 
 

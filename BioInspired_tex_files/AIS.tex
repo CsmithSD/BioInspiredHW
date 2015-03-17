@@ -1,7 +1,19 @@
 % !TEX root = BioInspired.tex
 
 \chapter{Immunocomputing - Text Chapter 6}
-
-
+\section{Problem 1}
+\par
+Use a bone marrow algorithm to define genes for gene libraries to be used to generate the initial population of a genetic algorithm to solve the TSP problem presented in Chapter 3 and Chapter  ( Figure 6.24 ). Assume the following structure for the gene libraries:
+	
+\newline
+Gene length L_g = 4, number of libraries n = 8, and library length ( number of genes in each library )L_l = 4. As one gene from each gene library will be selected, the total chromosome length is L = L_g x n = 4 x 8 = 32, that corresponds to the number of cities in a tour.
+\newline
+implement this bone marrow model to define an initial population of chromosomes to be used in an evolutionary algorithm to solve the TSP problem illustrated. Compare the performance of the algorithm with this type of initialization procedure and with the random initialization used in Project 1, Section 3.10.4
+\newline
+\newline 
+\par
+The bone marrow algorithm creates the gene libraries using stack encoding instead of representing each city with its number. Library one contains genes with the first element allowed to have a value from 0 to 31, second element 0 to 30, third 0-29, and fourth 0-28. This is the case for all genes in the first gene library. In the second it continues the stack encoding with values being 1 less then the previous element in the gene. so library 8 gene values would be 0-3, 0-2, 0-1, and 0 for the last element in the list. There is no need for a repair algorithm in this case since the libraries are created using stack encoding.
+\par
+Since we didn't wright the project 1 in chapter 3 for the traveling salesman problem this algorithm will be compared to the ACO. The ACO drops ants randomly across the edges between the nodes and then start searching for a path. The bone marrow algorithm will create a path randomly for a individual using a gene from each library. Once the population is initialized the population is evolved using a standard genetic algorithm of keeping the best individuals and recombining based on the top individuals. ACO would scatter the ants again and have them search for another optimal path. The shortest distance found with the bone marrow algorithm was 61.544870 and the path was 28 21 15 17 25 31 29 22 18 2 10 6 1 14 9 8 5 0 4 3 11 12 7 13 16 20 19 26 30 23 27 24.
 
 

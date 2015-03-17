@@ -1,5 +1,14 @@
 #include "../include/hill_climbing.h"
-#include "../include/simulated_annealing.h"
+
+int main()
+{
+    int input;
+    printf("Enter number of points to run hill climbing algorithm on: ");
+    scanf("%d", &input );
+    hill_climbing( input );
+    return 0;
+}
+
 void hill_climbing( const int &num_points )
 {
     int k = 0;
@@ -15,7 +24,7 @@ void hill_climbing( const int &num_points )
     //initialize individual(s) inbetween 0 and 1
     for( i = 0; i < num_points; i++)
     {
-        x[i] = random(0,1);
+        x[i] = random(0.0,1.0);
         local_optima_found[i] = false;
         printf("\t%f\n", x[i]);
     }
@@ -54,3 +63,11 @@ void hill_climbing( const int &num_points )
     free(x_prime);
     free(local_optima_found);
 }
+
+
+double random( double min, double max)
+{
+    return ((double)rand()/(double)RAND_MAX)*(max-min) + min;
+}
+
+
