@@ -16,7 +16,7 @@ int main()
 
 int stochastic_hill_climbing()
 {
-    double T = 1;
+    double T = .05;
     //Seed random number generator
     srand(time(NULL));
 

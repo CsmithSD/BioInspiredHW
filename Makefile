@@ -23,7 +23,7 @@ VPATH = src
 # MAKE allows the use of "wildcards", to make writing compilation instructions
 # a bit easier. GNU make uses $@ for the target and $^ for the dependencies.
 
-all:    hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
+all:    hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow ant_colony_optimization
 
 # specific targets
 hill_climbing: hill_climbing.o fit_func.o
@@ -39,6 +39,8 @@ genetic_programming: genetic_programming.o
 particle_swarm: particle_swarm.o fit_func.o
 	$(LINK) $(CFLAGS) $^ -o $@
 bone_marrow: bone_marrow.o
+	$(LINK) $(CFLAGS) $^ -o $@
+ant_colony_optimization: ant_colony_optimization.o 
 	$(LINK) $(CFLAGS) $^ -o $@
 
 #bio_inspired_hw:	main.o bone_marrow.o hill_climbing.o  fit_func.o particle_swarm.o simulated_annealing.o genetic_programming.o
@@ -56,7 +58,7 @@ bone_marrow: bone_marrow.o
 clean_objects:
 	rm -f *.o *~ core
 clean_execs:
-	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
+	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow ant_colony_optimization
 clean:
 	rm -f *.o *~ core
-	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
+	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow ant_colony_optimization
