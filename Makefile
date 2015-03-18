@@ -53,5 +53,10 @@ bone_marrow: bone_marrow.o
 	$(CXX) $(CFLAGS) -o $@ $@.cpp $(GL_LIBS)
 
 # utility targets
+clean_objects:
+	rm -f *.o *~ core
+clean_execs:
+	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
 clean:
 	rm -f *.o *~ core
+	rm -f hill_climbing stochastic_hill simulated_annealing genetic_algorithm genetic_programming particle_swarm bone_marrow
